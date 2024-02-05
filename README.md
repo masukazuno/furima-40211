@@ -1,6 +1,7 @@
 # README
 
-users table
+## users table
+|Column|Type|Options|
 |nickname|	string|null:false|
 |email|string|null: false, uniqueness: true|
 |password	|string	|null: false, uniqueness: true|
@@ -9,13 +10,14 @@ users table
 |ruby_last_name	|string	|null:false|
 |ruby_first_name|string	|null:false|
 
-Association
+### Association
 has_many :products
 has_one :credit_card
 has_one :ship_address
 
 
-itemsテーブル
+## itemsテーブル
+|Column|Type|Options|
 |name|	string|	null:false|
 |introduction|	text|	null:false|
 |price|	integer	|null:false|
@@ -27,37 +29,41 @@ itemsテーブル
 |seller|	references	|null:false,foreign_key:true|
 |buyer|	references	|foreign_key:true|
 
-Association
+### Association
 has_many :item_imgs, dependent: :destroy
 belongs_to :category
 belongs_to :user
 
 
-item_imgsテーブル
+## item_imgsテーブル
+|Column|Type|Options|
 |url|	string|	null:false|
 |item	|references	| null:false,foreign_key:true|
 
-Association
+### Association
 belongs_to :item
 
 
-credit_cardsテーブル
+## credit_cardsテーブル
+|Column|Type|Options|
 |user_id	|integer|	null:false|
 |customer_id|	string	null:false|
 |card_id	string	|null:false|
 
-Association
+### Association
 belongs_to: user
 
-categoriesテーブル
+## categoriesテーブル
+|Column|Type|Options|
 |name	|string|	null:false|
 |ancestry	|string	|null:false|
 
-Association
+### Association
 has_many :items
 
 
-sending_destinationsテーブル
+## sending_destinationsテーブル
+|Column|Type|Options|
 |destination_first_name|	string	|null:false|
 |destination_family_name|	string|	null:false|
 |destination_first_name_kana	|string	|null: false|
@@ -70,5 +76,5 @@ sending_destinationsテーブル
 |phone_number|	integer|	unique:true|
 |user	references|	null: false,foreign_key:true|
 
-Association
+### Association
 belongs_to: user
