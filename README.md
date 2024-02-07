@@ -4,15 +4,15 @@
 |Column|Type|Options|
 |nickname|	string|null:false|
 |email|string|null: false, uniqueness: true|
-|password	|string	|null: false, uniqueness: true|
+|encrypted_password	|string	|null: false, default|
 |last_name|	string|	null: false|
 |first_name|	string,|null: false|
 |ruby_last_name	|string	|null:false|
 |ruby_first_name|string	|null:false|
+|birthday |date	|null:false|
 
 ### Association
 has_many :products
-has_one :credit_card
 has_one :ship_address
 
 
@@ -21,37 +21,17 @@ has_one :ship_address
 |name|	string|	null:false|
 |introduction|	text|	null:false|
 |price|	integer	|null:false|
-|item_condition	|integer|	null:false,foreign_key:true|
-|postage_payer|	integer	|null:false,foreign_key: true|
-|prefecture_code|	integer	|null:false|
-|preparation_day|	integer|	null:false,foreign_key: true|
-|category	|references|	null:false,foreign_key:true|
-|seller|	references	|null:false,foreign_key:true|
-|buyer|	references	|foreign_key:true|
+|item_condition_id	|integer|	null:false,foreign_key:true|
+|postage_payer_id|	integer	|null:false,foreign_key: true|
+|prefecture_code_id|	integer	|null:false|
+|preparation_day_id|	integer|	null:false,foreign_key: true|
+|category_id	|references|	null:false,foreign_key:true|
+|seller	|references	| null:false,foreign_key:true | 
 
 ### Association
-has_many :item_imgs, dependent: :destroy
 belongs_to :category
 belongs_to :user
 
-
-## item_imgsテーブル
-|Column|Type|Options|
-|url|	string|	null:false|
-|item	|references	| null:false,foreign_key:true|
-
-### Association
-belongs_to :item
-
-
-## credit_cardsテーブル
-|Column|Type|Options|
-|user_id	|integer|	null:false|
-|customer_id|	string	null:false|
-|card_id	string	|null:false|
-
-### Association
-belongs_to: user
 
 ## categoriesテーブル
 |Column|Type|Options|
@@ -64,17 +44,24 @@ has_many :items
 
 ## sending_destinationsテーブル
 |Column|Type|Options|
-|destination_first_name|	string	|null:false|
-|destination_family_name|	string|	null:false|
-|destination_first_name_kana	|string	|null: false|
-|destination_family_name_kana	|string	|null: false|
-|post_code	integer(7)	|null:false|
+
+|post_code	| string	|null:false|
 |prefecture_code	|integer	|null:false|
 |city	|string|	null:false|
 |house_number	|string	|null:false|
 |building_name	|string	|
-|phone_number|	integer|	unique:true|
-|user	references|	null: false,foreign_key:true|
+|phone_number|	string |	unique:true|
+
 
 ### Association
 belongs_to: user
+
+## orders テーブル
+|Column|Type|Options|
+|user| references| null: false, foreign_key: true|
+|item	|references|	null: false, foreign_key: true|
+
+
+### Association
+belongs_to :user
+belongs_to :item
