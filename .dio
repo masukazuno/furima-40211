@@ -16,7 +16,7 @@
                 <mxCell id="54" value="itemsテーブル" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;align=center;fontSize=14;" parent="1" vertex="1">
                     <mxGeometry x="350" y="40" width="320" height="180" as="geometry"/>
                 </mxCell>
-                <mxCell id="55" value="|name|  string| null:false|&#10;|introduction|  text| null:false|&#10;|price| integer |null:false|&#10;|item_condition_id  |integer| null:false,foreign_key:true|&#10;|postage_payer_id|  integer |null:false,foreign_key: true|&#10;|prefecture_code_id|  integer |null:false|&#10;|preparation_day_id|  integer|  null:false,foreign_key: true|&#10;|category_id  |references|  null:false,foreign_key:true|&#10;|seller |references | null:false,foreign_key:true |" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="54" vertex="1">
+                <mxCell id="55" value="|Column|Type|Options|&#10;|name|  string| null:false|&#10;|introduction|  text| null:false|&#10;|price| integer |null:false|&#10;|item_condition_id  |integer |  null:false|&#10;|postage_payer_id|  integer |null:false|&#10;|prefecture_code_id|  integer |null:false|&#10;|preparation_day_id|  integer | null:false|&#10;|category_id  |integer| null:false|&#10;|user | references  | null: false,foreign_key:true|" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="54" vertex="1">
                     <mxGeometry y="26" width="320" height="154" as="geometry"/>
                 </mxCell>
                 <mxCell id="100" style="edgeStyle=none;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;" parent="1" edge="1">
@@ -37,14 +37,14 @@
                 <mxCell id="84" value="sending_destinationsテーブル" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;align=center;fontSize=14;" parent="1" vertex="1">
                     <mxGeometry x="10" y="280" width="270" height="150" as="geometry"/>
                 </mxCell>
-                <mxCell id="85" value="|post_code  | string  |null:false|&#10;|prefecture_code  |integer  |null:false|&#10;|city |string|  null:false|&#10;|house_number |string |null:false|&#10;|building_name  |string |&#10;|phone_number|  string |  unique:true|" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="84" vertex="1">
+                <mxCell id="85" value="|post_code  | string  |null:false|&#10;|prefecture_code_id |integer  |null:false|&#10;|city |string|  null:false|&#10;|house_number |string |null:false|&#10;|building_name  |string |&#10;|phone_number|  string |  unique:true,null:false|&#10;| order | references  | null: false,foreign_key:true| " style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="84" vertex="1">
                     <mxGeometry y="26" width="270" height="124" as="geometry"/>
                 </mxCell>
                 <mxCell id="103" style="edgeStyle=none;shape=flexArrow;html=1;entryX=1.015;entryY=0.411;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="29" target="85">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="29" value="|nickname|  string|null:false|&#10;|email|string|null: false, uniqueness: true|&#10;|encrypted_password |string |null: false, default|&#10;|last_name| string| null: false|&#10;|first_name|  string,|null: false|&#10;|ruby_last_name |string |null:false|&#10;|ruby_first_name|string |null:false|&#10;|birthday |date |null:false|&#10;" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="1" vertex="1">
-                    <mxGeometry x="370" y="301" width="310" height="134" as="geometry"/>
+                <mxCell id="29" value="|Column|Type|Options|&#10;|nickname|  string|null:false|&#10;|email|string|unique: true,null:false |&#10;|encrypted_password |string |null: false|&#10;|last_name| string| null: false|&#10;|first_name|  string,|null: false|&#10;|ruby_last_name |string |null:false|&#10;|ruby_first_name|string |null:false|&#10;|birthday |date |null:false|" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="370" y="301" width="310" height="139" as="geometry"/>
                 </mxCell>
                 <mxCell id="104" style="edgeStyle=none;shape=flexArrow;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.996;entryY=-0.056;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="55" target="80">
                     <mxGeometry relative="1" as="geometry"/>
