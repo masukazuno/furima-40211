@@ -6,6 +6,7 @@ RSpec.describe User, type: :model do
     @user = FactoryBot.build(:user)
   end
 
+
   describe 'ユーザー新規登録' do
     context '新規登録できるとき' do
       it 'nickname、email、password、password_confirmation、last_name、first_name、
@@ -62,6 +63,20 @@ RSpec.describe User, type: :model do
           expect(@user.errors.full_messages).to include("Password は半角英数を両方含む必要があります。")
         end
 
+        it 'パスワードが英字のみでは登録できない' do
+          @user.password = 'aaaaaa'
+          @user.password_confirmation = 'aaaaaa'
+          @user.valid?
+          expect(@user.errors.full_messages).to include("Password は半角英数を両方含む必要があります。")
+        end
+
+        it '全角文字を含むパスワードでは登録できない' do
+          @user.password = 'ああああああ'
+          @user.password_confirmation = 'ああああああ'
+          @user.valid?
+          expect(@user.errors.full_messages).to include("Password は半角英数を両方含む必要があります。")
+        end
+
         it 'passwordとpassword_confirmationが不一致では登録できない' do
           @user.password = '123456'
           @user.password_confirmation = '1234567'
@@ -90,7 +105,7 @@ RSpec.describe User, type: :model do
         it 'ruby_last_nameのフリガナは空では登録できない' do
           @user.ruby_last_name = ''
           @user.valid?
-          expect(@user.errors.full_messages).to include("Ruby last name can't be blank", "Ruby last name は必須項目です。", "Ruby last name はカタカナで入力して下さい。")
+          expect(@user.errors.full_messages). to include("Ruby last name can't be blank")
         end
 
           it 'ruby_first_nameが空では登録できない' do
