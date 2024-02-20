@@ -10,10 +10,10 @@ class ApplicationController < ActionController::Base
     authenticate_or_request_with_http_basic do |username, password|
       username == 'admin' && password == '2222'
     end
+  end
 
     def configure_permitted_parameters
       devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname, :birthday, :first_name, :last_name, :ruby_last_name, :ruby_first_name])
-      devise_parameter_sanitizer.permit(:sign_in, keys: [:nickname, :birthday, :first_name, :last_name, :ruby_last_name, :ruby_first_name])
-end
+
 end
 end
