@@ -1,7 +1,4 @@
-class Postage < ActiveHash::Base
-
-  include ActiveHash::Associations
-   has_many :items
+class PostagePayer < ActiveHash::Base
 
    self.data = [
     { id: 1, postage_payer: '---' },
@@ -9,5 +6,6 @@ class Postage < ActiveHash::Base
     { id: 3, postage_payer: '送料込み（出品者負担）' }
   ]
   include ActiveHash::Associations
+  belongs_to :user
   has_many :items
 end
