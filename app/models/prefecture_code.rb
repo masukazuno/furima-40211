@@ -1,4 +1,4 @@
-class Prefecture < ActiveHash::Base
+class PrefectureCode < ActiveHash::Base
 
   include ActiveHash::Associations
    has_many :items
