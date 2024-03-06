@@ -56,7 +56,7 @@
           商品の状態
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select(:item_condition_id, Condition.all, :id, :item_condition, {prompt: "選択してください"}, {class:"select-box", id:"item-item_condition_id"}) %>
+        <%= f.collection_select(:item_condition_id, ItemCondition.all, :id, :item_condition, {prompt: "選択してください"}, {class:"select-box", id:"item-item_condition_id"}) %>
       </div>
     </div>
     <%# /商品の詳細 %>
@@ -72,17 +72,17 @@
           配送料の負担
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select(:postage_payer_id, Postage.all, :id, :postage_payer, {prompt: "選択してください"}, {class:"select-box", id:"item-postage_payer_id"}) %>
+        <%= f.collection_select(:postage_payer_id, PostagePayer.all, :id, :postage_payer, {prompt: "選択してください"}, {class:"select-box", id:"item-postage_payer_id"}) %>
         <div class="weight-bold-text">
           発送元の地域
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select(:prefecture_code_id, Prefecture.all, :id, :prefecture_code, {prompt: "選択してください"}, {class:"select-box", id:"item-prefecture_code_id"}) %>
+        <%= f.collection_select(:prefecture_code_id, PrefectureCode.all, :id, :prefecture_code, {prompt: "選択してください"}, {class:"select-box", id:"item-prefecture_code_id"}) %>
         <div class="weight-bold-text">
           発送までの日数
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select(:preparation_day_id, Preparation.all, :id, :preparation_day, {prompt: "選択してください"}, {class:"select-box", id:"item-preparation_day_id"}) %>
+        <%= f.collection_select(:preparation_day_id, PreparationDay.all, :id, :preparation_day, {prompt: "選択してください"}, {class:"select-box", id:"item-preparation_day_id"}) %>
       </div>
     </div>
     <%# /配送について %>
