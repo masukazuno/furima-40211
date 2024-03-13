@@ -1,10 +1,10 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :non_purchased_item, only: [:index, :create]
-  
+  before_action :set_item, only: [:index]
+
     def index
     gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
-    @item = Item.find(params[:item_id])
     @orderform = OrderForm.new
     if current_user == @item.user
       redirect_to root_path
@@ -18,7 +18,7 @@ end
       @orderform.save(params,current_user.id)
       redirect_to root_path
       else
-      @item = Item.find(params[:item_id])
+      @item = Item.find(params[:item_id]) 
       gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
       render :index, status: :unprocessable_entity
       end
@@ -42,5 +42,9 @@ end
       @item = Item.find(params[:item_id])
     redirect_to root_path if current_user.id == @item.user_id || @item.order.present?
     end
+
+    def set_item
+      @item = Item.find(params[:item_id])
+     end
 
   end
