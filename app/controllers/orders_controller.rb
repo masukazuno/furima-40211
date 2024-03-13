@@ -2,14 +2,14 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :non_purchased_item, only: [:index, :create]
   
-  
-  
     def index
     gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
     @item = Item.find(params[:item_id])
     @orderform = OrderForm.new
-    end
-
+    if current_user == @item.user
+      redirect_to root_path
+  end
+end
     def create
 
       @orderform = OrderForm.new(order_params)
@@ -43,5 +43,4 @@ class OrdersController < ApplicationController
     redirect_to root_path if current_user.id == @item.user_id || @item.order.present?
     end
 
-      
-end
+  end
