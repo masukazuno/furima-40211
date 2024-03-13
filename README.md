@@ -33,7 +33,7 @@ belongs_to :user
 has_one :order
 
 
-## sending_destinationsテーブル
+## address テーブル
 |Column|Type|Options|
 
 |post_code	| string	|null:false|
@@ -50,6 +50,7 @@ belongs_toshi :order
 
 ## orders テーブル
 |Column|Type|Options|
+
 |user| references| null: false, foreign_key: true|
 |item	|references|	null: false, foreign_key: true|
 
